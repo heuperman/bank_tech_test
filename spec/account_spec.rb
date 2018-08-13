@@ -38,9 +38,9 @@ describe Account do
   describe '#show_statement' do
     it 'shows date, type, amount resulting balance of transactions' do
       expected_statement = "date || credit || debit || balance\n"\
-                           "13/08/2018 || 500 || || 500\n"\
+                           "13/08/2018 || || 170 || 230\n"\
                            "13/08/2018 || || 100 || 400\n"\
-                           '13/08/2018 || || 170 || 230'
+                           '13/08/2018 || 500 || || 500'
       account.deposit(500)
       account.withdraw(100)
       account.withdraw(170)
