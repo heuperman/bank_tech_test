@@ -1,6 +1,6 @@
 # Bank tech test
 
-Record deposits and withdrawals from an account. See all transfers, with the date it took place and uthe resulting balance on a bank statement.
+Record deposits and withdrawals from an account. See all transfers, with the date it took place and the resulting balance on a bank statement.
 
 ## Setup
 Install bundler:
@@ -14,3 +14,14 @@ Install dependencies:
 To open up IRB in your terminal type `irb` and hit enter.
 
 ### List of commands:
+
+Create a new account:
+`account = Account.new`
+
+Make a deposit:
+`account.deposit(amount)`
+with amount being the amount you want to deposit
+
+Make a withdrawal:
+`account.withdraw(amount)`
+with amount being the amount you want to withdraw
