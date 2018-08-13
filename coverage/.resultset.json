@@ -115,7 +115,7 @@
         null,
         null
       ],
-      "/Users/kees/Projects/week-10/bank_tech_test/spec/feature_spec.rb": [
+      "/Users/kees/Projects/week-10/bank_tech_test/spec/features/deposit_spec.rb": [
         null,
         null,
         1,
@@ -172,8 +172,26 @@
         null,
         null,
         null
+      ],
+      "/Users/kees/Projects/week-10/bank_tech_test/spec/units/controller_spec.rb": [
+        null,
+        null,
+        1,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1534175508
+    "timestamp": 1534176704
   }
 }
