@@ -4,13 +4,19 @@ require 'controller.rb'
 
 describe Controller do
   let(:account) { double :account }
-  let(:transaction) { double :transaction, new: "test" }
+  let(:transaction) { double :transaction, new: 'test' }
   let(:controller) { Controller.new(account, transaction) }
 
   describe '#deposit' do
     it 'creates a new transaction' do
       controller.deposit(100)
       expect(transaction).to have_received(:new)
+    end
+
+    it 'passes the amount and type of transaction' do
+      controller.deposit(100)
+      expect(transaction).to have_received(:new)
+        .with(type: 'credit', amount: 100)
     end
   end
 end

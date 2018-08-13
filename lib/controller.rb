@@ -7,6 +7,6 @@ class Controller
   end
 
   def deposit(amount)
-    @transaction.new
+    @transaction.new(type: 'credit', amount: amount)
   end
 end
