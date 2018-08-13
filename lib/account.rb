@@ -44,7 +44,7 @@ class Account
   end
 
   def add_transactions(statement)
-    @transaction_history.each do |transaction|
+    @transaction_history.reverse_each do |transaction|
       statement_line = construct_statement_line(transaction)
       statement.push(statement_line)
     end
