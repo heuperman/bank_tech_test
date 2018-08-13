@@ -19,7 +19,7 @@ class Account
     add_to_history('debit', amount)
   end
 
-  def print_statement
+  def show_statement
     statement_array = construct_statement_array
     statement_array.join("\n")
   end
@@ -31,11 +31,15 @@ class Account
   end
 
   def add_to_history(type, amount)
-    @transaction_history.push(type: type, amount: amount, balance: @balance)
+    date = Time.now.strftime('%d/%m/%Y')
+    @transaction_history.push(date: date,
+                              type: type,
+                              amount: amount,
+                              balance: @balance)
   end
 
   def construct_statement_array
-    @statement = ['credit || debit || balance']
+    @statement = ['date || credit || debit || balance']
     add_transactions(@statement)
   end
 
@@ -48,10 +52,9 @@ class Account
   end
 
   def construct_statement_line(transaction)
-    if transaction[:type] == 'credit'
-      "#{transaction[:amount]} || || #{transaction[:balance]}"
-    else
-      " || #{transaction[:amount]} || #{transaction[:balance]}"
-    end
+    line_array = [transaction[:date], '||', '||', '||', transaction[:balance]]
+    column_to_insert_amount = transaction[:type] == 'credit' ? 2 : 3
+    line_array.insert(column_to_insert_amount, transaction[:amount])
+    line_array.join(' ')
   end
 end
