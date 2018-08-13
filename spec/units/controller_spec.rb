@@ -4,8 +4,8 @@ require 'controller.rb'
 
 describe Controller do
   let(:account) { double :account }
-  let(:transaction) { double :transaction }
-  controller = Controller.new(account, transaction)
+  let(:transaction) { double :transaction, new: "test" }
+  let(:controller) { Controller.new(account, transaction) }
 
   describe '#deposit' do
     it 'creates a new transaction' do

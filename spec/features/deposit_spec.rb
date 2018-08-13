@@ -3,10 +3,11 @@
 require 'controller.rb'
 
 describe 'Deposit' do
-  describe 'user can deposit funds' do
-    let(:account) { Account.new }
-    let(:controller) { Controller.new(account) }
+  let(:account) { Account.new }
+  let(:transaction) { Transaction.new }
+  let(:controller) { Controller.new(account, transaction) }
 
+  it 'lets user deposit funds' do
     expect { controller.deposit(100) }.to change { account.balance }.by(100)
   end
 end
