@@ -2,7 +2,7 @@
 
 # Keeps track of and updates the account balance
 class Account
-  attr_reader :balance
+  attr_reader :balance, :transaction_history
 
   def initialize
     @balance = 0
