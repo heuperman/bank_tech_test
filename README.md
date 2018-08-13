@@ -11,7 +11,8 @@ Install dependencies:
 
 ## Get started
 
-To open up IRB in your terminal type `irb` and hit enter.
+To open up IRB in your terminal and load the app type:
+`irb -r ./lib/account.rb`
 
 ### List of commands:
 
@@ -25,3 +26,6 @@ with amount being the amount you want to deposit
 Make a withdrawal:
 `account.withdraw(amount)`
 with amount being the amount you want to withdraw
+
+See a statement:
+`account.statement`

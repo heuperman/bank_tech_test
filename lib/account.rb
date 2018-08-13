@@ -10,25 +10,48 @@ class Account
   end
 
   def deposit(amount)
-    @balance += amount
-    @transaction_history.push(type: 'credit', amount: amount, balance: @balance)
+    update_balance('credit', amount)
+    add_to_history('credit', amount)
   end
 
   def withdraw(amount)
-    @balance -= amount
-    @transaction_history.push(type: 'debit', amount: amount, balance: @balance)
+    update_balance('debit', amount)
+    add_to_history('debit', amount)
   end
 
   def print_statement
+    statement_array = construct_statement_array
+    statement_array.join("\n")
+  end
+
+  private
+
+  def update_balance(type, amount)
+    type == 'credit' ? @balance += amount : @balance -= amount
+  end
+
+  def add_to_history(type, amount)
+    @transaction_history.push(type: type, amount: amount, balance: @balance)
+  end
+
+  def construct_statement_array
     @statement = ['credit || debit || balance']
+    add_transactions(@statement)
+  end
+
+  def add_transactions(statement)
     @transaction_history.each do |transaction|
-      if transaction[:type] == 'credit'
-        statement_line = "#{transaction[:amount]} || || #{transaction[:balance]}"
-      else
-        statement_line = " || #{transaction[:amount]} || #{transaction[:balance]}"
-      end
-      @statement.push(statement_line)
+      statement_line = construct_statement_line(transaction)
+      statement.push(statement_line)
     end
-    @statement.join("\n")
+    statement
+  end
+
+  def construct_statement_line(transaction)
+    if transaction[:type] == 'credit'
+      "#{transaction[:amount]} || || #{transaction[:balance]}"
+    else
+      " || #{transaction[:amount]} || #{transaction[:balance]}"
+    end
   end
 end

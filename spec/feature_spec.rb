@@ -19,10 +19,11 @@ describe Account do
 
   describe '#print_statement' do
     it 'prints statement showing deposits, withdrawals and resulting balance' do
+      statement = "credit || debit || balance\n500 || || 500\n"\
+                  " || 100 || 400\n || 170 || 230"
       account.deposit(500)
       account.withdraw(100)
       account.withdraw(170)
-      statement = "credit || debit || balance\n500 || || 500\n || 100 || 400\n || 170 || 230"
       expect(account.print_statement).to eq statement
     end
   end
