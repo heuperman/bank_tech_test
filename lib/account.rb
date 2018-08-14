@@ -4,9 +4,10 @@
 class Account
   attr_reader :balance, :transaction_history
 
-  def initialize
+  def initialize(printer)
     @balance = 0
     @transaction_history = []
+    @printer = printer
   end
 
   def deposit(amount)
@@ -21,7 +22,8 @@ class Account
 
   def show_statement
     statement_array = construct_statement_array
-    statement_array.join("\n")
+    statement = statement_array.join("\n")
+    @printer.to_screen(statement)
   end
 
   private

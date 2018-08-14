@@ -13,11 +13,16 @@ To run test, type `rspec`
 
 ## Get started
 To open up IRB in your terminal and load the app type:
-`irb -r ./lib/account.rb`
+`irb`
+
+Require the necessary files:
+`require ' -r ./lib/account.rb'`
+`require ' -r ./lib/printer.rb'`
 
 ## List of commands:
-Create a new account:
-`account = Account.new`
+Create a new printer and account:
+`printer = Printer.new`
+`account = Account.new(printer)`
 
 Make a deposit:
 `account.deposit(amount)`
