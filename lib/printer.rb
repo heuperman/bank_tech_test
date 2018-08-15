@@ -2,7 +2,7 @@
 
 # Prints passed data to the screen
 class Printer
-  def to_screen(statement)
+  def self.to_screen(statement)
     puts statement
   end
 end

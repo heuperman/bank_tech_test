@@ -37,5 +37,3 @@ See a statement:
 
 ## Process
 This app has been built using TDD principles. The tests reflect the expected behaviour as outlined in the requirements [found here](https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md). The code has been written in small steps with the goal of satisfying the tests. Whenever all tests passed, the code and tests have been refactored to make sure they are sticking to single responsibility principle and in order to keep the code as declarative as possible. After this new tests have been written to meet more of the requirements.
-
-As it is a simple app, all methods are currently contained in one class. This will likely change in the future.

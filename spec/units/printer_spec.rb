@@ -2,8 +2,8 @@
 
 require 'printer.rb'
 
-describe Account do
-  let(:printer) { Printer.new }
+describe Printer do
+  let(:printer) { Printer }
 
   describe '#print_statement' do
     it 'prints date, type, amount resulting balance of transactions' do
