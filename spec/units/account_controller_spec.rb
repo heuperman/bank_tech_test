@@ -34,6 +34,11 @@ describe AccountController do
         .with('09/11/2001', 'credit', 300.00, 0)
       account_controller.deposit(300.00)
     end
+
+    it 'raises an error when passed an amount with more than two decimals' do
+      message = 'Cannot deposit: please enter amount with two decimals'
+      expect { account_controller.deposit(500.003) }.to raise_error(message)
+    end
   end
 
   describe '#withdraw' do
@@ -46,6 +51,11 @@ describe AccountController do
       expect(account_history).to receive(:add_transaction)
         .with('09/11/2001', 'debit', 600.00, 0)
       account_controller.withdraw(600.00)
+    end
+
+    it 'raises an error when passed an amount with more than two decimals' do
+      message = 'Cannot withdraw: please enter amount with two decimals'
+      expect { account_controller.withdraw(500.003) }.to raise_error(message)
     end
   end
 
