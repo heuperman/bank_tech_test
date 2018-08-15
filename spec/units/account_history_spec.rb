@@ -10,14 +10,14 @@ describe AccountHistory do
       transaction = {
         date: '09/11/2001',
         type: 'credit',
-        amount: '400',
-        balance: '600'
+        amount: '400.00',
+        balance: '600.00'
       }
       account_history.add_transaction(
         '09/11/2001',
         'credit',
-        '400',
-        '600'
+        '400.00',
+        '600.00'
       )
       expect(account_history.show_transactions).to contain_exactly(transaction)
     end

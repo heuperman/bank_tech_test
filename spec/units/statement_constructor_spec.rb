@@ -9,12 +9,12 @@ describe StatementConstructor do
       transactions = [{
         date: '07/04/2017',
         type: 'credit',
-        amount: 200,
-        balance: 400
+        amount: 200.00,
+        balance: 400.00
       }]
       output = [
         'date || credit || debit || balance',
-        '07/04/2017 || 200 || || 400'
+        '07/04/2017 || 200.00 || || 400.00'
       ]
       expect(StatementConstructor.construct(transactions)).to eq output
     end

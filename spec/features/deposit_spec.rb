@@ -9,7 +9,7 @@ describe 'depositing' do
   end
 
   it 'user can make a deposit into their account' do
-    account_controller.deposit(100)
-    expect(account_balance.balance).to be(100)
+    account_controller.deposit(100.00)
+    expect(account_balance.balance).to be(100.00)
   end
 end

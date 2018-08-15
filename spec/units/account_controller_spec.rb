@@ -25,27 +25,27 @@ describe AccountController do
 
   describe '#deposit' do
     it 'tells the account balance to update' do
-      expect(account_balance).to receive(:update).with('credit', 500)
-      account_controller.deposit(500)
+      expect(account_balance).to receive(:update).with('credit', 500.00)
+      account_controller.deposit(500.00)
     end
 
     it 'tells the account history to add the transaction' do
       expect(account_history).to receive(:add_transaction)
-        .with('09/11/2001', 'credit', 300, 0)
-      account_controller.deposit(300)
+        .with('09/11/2001', 'credit', 300.00, 0)
+      account_controller.deposit(300.00)
     end
   end
 
   describe '#withdraw' do
     it 'tells the account balance to update' do
-      expect(account_balance).to receive(:update).with('debit', 100)
-      account_controller.withdraw(100)
+      expect(account_balance).to receive(:update).with('debit', 100.00)
+      account_controller.withdraw(100.00)
     end
 
     it 'tells the account history to add the transaction' do
       expect(account_history).to receive(:add_transaction)
-        .with('09/11/2001', 'debit', 600, 0)
-      account_controller.withdraw(600)
+        .with('09/11/2001', 'debit', 600.00, 0)
+      account_controller.withdraw(600.00)
     end
   end
 

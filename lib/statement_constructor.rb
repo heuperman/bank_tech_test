@@ -16,9 +16,15 @@ class StatementConstructor
   end
 
   def self.construct_statement_line(transaction)
-    line_array = [transaction[:date], '||', '||', '||', transaction[:balance]]
+    line_array = [
+      transaction[:date], '||', '||', '||',
+      format('%0.2f', transaction[:balance])
+    ]
     column_to_insert_amount = transaction[:type] == 'credit' ? 2 : 3
-    line_array.insert(column_to_insert_amount, transaction[:amount])
+    line_array.insert(
+      column_to_insert_amount,
+      format('%0.2f', transaction[:amount])
+    )
     line_array.join(' ')
   end
 
