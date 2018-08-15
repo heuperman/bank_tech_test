@@ -18,13 +18,13 @@ class AccountController
   end
 
   def deposit(amount)
-    check_if_two_decimals('deposit', amount)
+    assert_if_two_decimals('deposit', amount)
     balance = @account_balance.update('credit', amount)
     @account_history.add_transaction(@date, 'credit', amount, balance)
   end
 
   def withdraw(amount)
-    check_if_two_decimals('withdraw', amount)
+    assert_if_two_decimals('withdraw', amount)
     balance = @account_balance.update('debit', amount)
     @account_history.add_transaction(@date, 'debit', amount, balance)
   end
@@ -37,7 +37,7 @@ class AccountController
 
   private
 
-  def check_if_two_decimals(type, amount)
+  def assert_if_two_decimals(type, amount)
     message = "Cannot #{type}: please enter amount with two decimals"
     raise message unless amount.round(2) == amount
   end
