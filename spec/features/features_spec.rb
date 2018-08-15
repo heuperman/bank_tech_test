@@ -4,10 +4,7 @@ require 'account_controller.rb'
 
 describe 'features' do
   describe 'depositing money' do
-    let(:account_balance) { AccountBalance.new }
-    let(:account_controller) do
-      AccountController.new(account_balance: account_balance)
-    end
+    let(:account_controller) { AccountController.new }
 
     it 'user can make a deposit into their account' do
       account_controller.deposit(100.00)

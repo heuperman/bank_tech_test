@@ -7,14 +7,18 @@ require 'account_balance.rb'
 
 # Let's user control the other components of the app
 class AccountController
-  def initialize(params = {})
-    @printer = params.fetch(:printer, Printer)
-    @statement_constructor = params.fetch(
-      :statement_constructor, StatementConstructor
-    )
-    @account_history = params.fetch(:account_history, AccountHistory.new)
-    @account_balance = params.fetch(:account_balance, AccountBalance.new)
-    @date = params.fetch(:date, Time.now.strftime('%d/%m/%Y'))
+  def initialize(
+    printer = Printer.new,
+    statement_constructor = StatementConstructor.new,
+    account_history = AccountHistory.new,
+    account_balance = AccountBalance.new,
+    date = Time.now.strftime('%d/%m/%Y')
+  )
+    @printer = printer
+    @statement_constructor = statement_constructor
+    @account_history = account_history
+    @account_balance = account_balance
+    @date = date
   end
 
   def deposit(amount)
