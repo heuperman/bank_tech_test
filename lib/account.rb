@@ -13,15 +13,17 @@ class Account
   end
 
   def deposit(amount)
+    transaction_type = 'credit'
     assert_if_two_decimals('deposit', amount)
-    update_balance('credit', amount)
-    store_transaction('credit', amount)
+    update_balance(transaction_type, amount)
+    store_transaction(transaction_type, amount)
   end
 
   def withdraw(amount)
+    transaction_type = 'debit'
     assert_if_two_decimals('withdraw', amount)
-    update_balance('debit', amount)
-    store_transaction('debit', amount)
+    update_balance(transaction_type, amount)
+    store_transaction(transaction_type, amount)
   end
 
   def print_statement
