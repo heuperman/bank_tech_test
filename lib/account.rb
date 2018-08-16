@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'statement_constructor.rb'
+require_relative './statement_constructor.rb'
 
-# Keeps track of transactions
+# Handles transactions
 class Account
   attr_reader :balance, :transactions
   def initialize(statement_constructor = StatementConstructor,
