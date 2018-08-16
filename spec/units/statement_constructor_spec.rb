@@ -7,10 +7,8 @@ describe StatementConstructor do
     it 'returns array of strings containing statement '\
     'header and list of transactions' do
       transactions = [{
-        date: '07/04/2017',
-        type: 'credit',
-        amount: 200.00,
-        balance: 400.00
+        date: '07/04/2017', type: 'credit',
+        amount: 200.00, balance: 400.00
       }]
       output = [
         'date || credit || debit || balance',

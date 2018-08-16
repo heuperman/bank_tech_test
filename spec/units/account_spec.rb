@@ -11,7 +11,7 @@ describe Account do
                       '13/08/2018 || 500.00 || || 500.00'
   end
 
-  let(:account) { Account.new(statement_constructor) }
+  let(:account) { Account.new(statement_constructor, '15/08/2018') }
 
   describe '#deposit' do
     it 'raises an error when passed an amount with more than two decimals' do
