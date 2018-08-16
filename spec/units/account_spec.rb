@@ -3,15 +3,15 @@
 require 'account.rb'
 
 describe Account do
-  let(:statement_constructor) do
-    double :statement_constructor,
+  let(:statement_handler) do
+    double :statement_handler,
            construct: "date || credit || debit || balance\n"\
                       "13/08/2018 || || 170.00 || 230.00\n"\
                       "13/08/2018 || || 100.00 || 400.00\n"\
                       '13/08/2018 || 500.00 || || 500.00'
   end
 
-  let(:account) { Account.new(statement_constructor, '15/08/2018') }
+  let(:account) { Account.new(statement_handler, '15/08/2018') }
 
   describe '#deposit' do
     it 'raises an error when passed an amount with more than two decimals' do
@@ -46,15 +46,17 @@ describe Account do
   end
 
   describe '#print_statement' do
-    it 'prints out a statement containing all previous transactions' do
+    it 'tells statement contstructor print statement of transactions' do
       account.deposit(500.00)
       account.withdraw(100.00)
       account.withdraw(170.00)
-      statement = "date || credit || debit || balance\n"\
-                  "13/08/2018 || || 170.00 || 230.00\n"\
-                  "13/08/2018 || || 100.00 || 400.00\n"\
-                  "13/08/2018 || 500.00 || || 500.00\n"
-      expect { account.print_statement }.to output(statement).to_stdout
+      transactions = [
+        { amount: 500.0, balance: 500.0, date: '15/08/2018', type: 'credit' },
+        { amount: 100.0, balance: 400.0, date: '15/08/2018', type: 'debit' },
+        { amount: 170.0, balance: 230.0, date: '15/08/2018', type: 'debit' }
+      ]
+      expect(statement_handler).to receive(:print_statement).with(transactions)
+      account.print_statement
     end
   end
 end

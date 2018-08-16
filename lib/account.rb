@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require_relative './statement_constructor.rb'
+require_relative './statement_handler.rb'
 
 # Handles transactions
 class Account
   attr_reader :balance, :transactions
-  def initialize(statement_constructor = StatementConstructor,
-                 date = Time.now.strftime('%d/%m/%Y'))
-    @statement_constructor = statement_constructor
+  def initialize(statement_handler = StatementHandler, date = nil)
+    @statement_handler = statement_handler
     @date = date
     @balance = 0
     @transactions = []
@@ -26,8 +25,7 @@ class Account
   end
 
   def print_statement
-    statement = @statement_constructor.construct(@transactions)
-    puts statement
+    @statement_handler.print_statement(@transactions)
   end
 
   private
@@ -43,7 +41,7 @@ class Account
 
   def store_transaction(type, amount)
     @transactions.push(
-      date: @date,
+      date: @date || Time.now.strftime('%d/%m/%Y'),
       type: type,
       amount: amount,
       balance: @balance

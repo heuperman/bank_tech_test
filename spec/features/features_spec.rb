@@ -3,8 +3,8 @@
 require 'account.rb'
 
 describe 'features' do
-  let(:statement_constructor) { StatementConstructor }
-  let(:account) { Account.new(StatementConstructor, '13/08/2018') }
+  let(:statement_handler) { StatementHandler }
+  let(:account) { Account.new(StatementHandler, '13/08/2018') }
   describe 'depositing money' do
     it 'user can make a deposit into their account' do
       expect { account.deposit(103.20) }.to change { account.balance }.by(103.20)
